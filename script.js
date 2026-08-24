@@ -1,30 +1,35 @@
-function analisarMastite() {
-  // Captura os dados informados pelo usuário
-  const aspecto = document.getElementById('aspectoLeite').value;
-  const ccs = parseFloat(document.getElementById('ccs').value);
-  const divResultado = document.getElementById('resultado');
-
-  // Validação de entrada
-  if (isNaN(ccs) || ccs < 0) {
-    divResultado.style.display = 'block';
-    divResultado.className = 'res-clinica';
-    divResultado.innerHTML = '⚠️ Por favor, informe um valor válido de CCS.';
-    return;
+// Alterna entre as abas de Mastite Clínica e Subclínica
+function openTab(evt, tabName) {
+  let i, tabcontent, tablinks;
+  
+  // Esconde todas as abas
+  tabcontent = document.getElementsByClassName("tab-content");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].classList.remove("active");
   }
 
-  divResultado.style.display = 'block';
+  // Remove o estado ativo dos botões
+  tablinks = document.getElementsByClassName("tab-btn");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].classList.remove("active");
+  }
 
-  // Lógica para identificação do tipo de mastite
-  if (aspecto === 'grumos' || aspecto === 'aquoso') {
-    divResultado.className = 'res-clinica';
-    divResultado.innerHTML = '🔴 <strong>DIAGNÓSTICO: MASTITE CLÍNICA</strong><br>O leite apresenta alterações visíveis. O animal deve ser isolado do lote de ordenha e submetido ao tratamento/protocolo veterinário específico.';
-  } 
-  else if (ccs > 200) {
-    divResultado.className = 'res-subclinica';
-    divResultado.innerHTML = `🟡 <strong>DIAGNÓSTICO: MASTITE SUBCLÍNICA</strong><br>Apesar de o leite parecer normal, a CCS está elevada (${ccs}.000 cél/mL - limite saudável até 200.000 cél/mL). Recomendado realizar teste CMT individual por teto.`;
-  } 
-  else {
-    divResultado.className = 'res-normal';
-    divResultado.innerHTML = `🟢 <strong>DIAGNÓSTICO: SAUDÁVEL / NORMAL</strong><br>Leite sem alterações visíveis e CCS em nível adequado (${ccs}.000 cél/mL). Mantenha as boas práticas de manejo e higienização.`;
+  // Ativa a aba selecionada
+  document.getElementById(tabName).classList.add("active");
+  evt.currentTarget.classList.add("active");
+}
+
+// Avalia os sintomas no componente interativo de diagnóstico
+function avaliarSintoma() {
+  const select = document.getElementById("sintomaSelect");
+  const resultado = document.getElementById("resultadoDiag");
+  const valor = select.value;
+
+  if (valor === "grumos" || valor === "incho") {
+    resultado.innerHTML = "<strong style='color:#c0392b;'>Alerta de Mastite Clínica:</strong> Descarte o leite deste teto e inicie o tratamento medicamentoso com acompanhamento veterinário.";
+  } else if (valor === "ccs") {
+    resultado.innerHTML = "<strong style='color:#d35400;'>Alerta de Mastite Subclínica:</strong> Realize o teste CMT em todo o rebanho para identificar os animais transmissores silenciosos.";
+  } else {
+    resultado.innerHTML = "Selecione um sintoma para ver a recomendação.";
   }
 }

@@ -1,92 +1,52 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mastite Bovina e suas Variantes</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background-color: #f4f6f8;
-      color: #333;
-      margin: 0;
-      padding: 20px;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    h1 {
-      color: #2c3e50;
-      text-align: center;
-      border-bottom: 2px solid #3498db;
-      padding-bottom: 10px;
-    }
-    h2 {
-      color: #2980b9;
-      margin-top: 25px;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 20px auto;
-      border-radius: 6px;
-    }
-    .card {
-      background: #eef7fc;
-      border-left: 4px solid #3498db;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 0 6px 6px 0;
-    }
-    ul {
-      margin-top: 5px;
-    }
-  </style>
-</head>
-<body>
+<article class="blog-post">
+  <header class="post-header">
+    <span class="category">Saúde Animal & Pecuária</span>
+    <h1>Mastite Bovina: O que é, Como se Apresenta, Diagnóstico e Prevenção</h1>
+    <p class="subtitle">Entenda as formas clínica e subclínica da inflamação da glândula mamária e como proteger a qualidade do leite do rebanho.</p>
+  </header>
 
-  <div class="container">
-    <h1>Mastite Bovina: O que é e Variantes</h1>
+  <section class="post-section">
+    <h2>O que é a Mastite Bovina?</h2>
+    <p>A mastite é a <strong>inflamação da glândula mamária</strong> das vacas, provocada pela proliferação de microrganismos como bactérias e fungos no canal do teto.</p>
+  </section>
+
+  <section class="post-section">
+    <h2>Formas de Manifestação da Mastite</h2>
     
-    <p>A <strong>mastite bovina</strong> é a inflamação da glândula mamária das vacas, provocada principalmente por infecções bacterianas. É uma das doenças mais preocupantes na pecuária de leite, pois reduz drasticamente a produção e altera a qualidade do leite.</p>
+    <!-- Controles das Abas (JS) -->
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="openTab(event, 'clinica')">Mastite Clínica</button>
+      <button class="tab-btn" onclick="openTab(event, 'subclinica')">Mastite Subclínica</button>
+    </div>
 
-    <!-- Imagem demonstrativa sobre a doença -->
-    <img src="https://apecuariadeprecisao.com.br/wp-content/uploads/2024/11/Esquema_Mastite.png" alt="Esquema explicativo da mastite bovina">
-
-    <h2>Variantes Principais da Mastite</h2>
-
-    <div class="card">
-      <h3>1. Mastite Subclínica</h3>
-      <p>É a forma mais silenciosa e frequente da doença.</p>
+    <div id="clinica" class="tab-content active">
+      <h3>Mastite Clínica (Sinais Visíveis)</h3>
       <ul>
-        <li><strong>Sintomas visíveis:</strong> Nenhum no teto ou no leite.</li>
-        <li><strong>Diagnóstico:</strong> Feito por meio de testes de laboratório ou de campo, como o CMT (<em>California Mastitis Test</em>) e contagem de células somáticas (CCS).</li>
-        <li><strong>Impacto:</strong> Redução invisível da produção de leite no rebanho.</li>
+        <li><strong>No Úbere:</strong> Inchaço, dor, calor ao toque e vermelhidão.</li>
+        <li><strong>No Leite:</strong> Presença de grumos, pus, sangue ou aspecto aquoso.</li>
       </ul>
     </div>
 
-    <div class="card">
-      <h3>2. Mastite Clínica</h3>
-      <p>Forma em que as alterações físicas são visíveis a olho nu.</p>
+    <div id="subclinica" class="tab-content">
+      <h3>Mastite Subclínica (Silenciosa)</h3>
       <ul>
-        <li><strong>Sintomas visíveis:</strong> Leite com grumos, pus ou aspecto aquoso; úbere inchado, quente, dolorido e avermelhado.</li>
-        <li><strong>Gravidade:</strong> Pode variar de leve a grave (onde a vaca pode apresentar febre e perda de apetite).</li>
+        <li><strong>Sem sintomas visíveis:</strong> O úbere e o leite parecem saudáveis.</li>
+        <li><strong>Indicadores:</strong> Queda brusca na produção de leite e alta Contagem de Células Somáticas (CCS).</li>
       </ul>
     </div>
+  </section>
 
-    <h2>Classificação quanto à Origem</h2>
-    <ul>
-      <li><strong>Mastite Contagiosa:</strong> Transmitida de uma vaca para outra durante a ordenha (ex: bactérias no equipamento ou mãos do ordenhador).</li>
-      <li><strong>Mastite Ambiental:</strong> Causada por microrganismos presentes no ambiente (cama, barro, fezes e água contaminada).</li>
-    </ul>
-  </div>
-
-</body>
-</html>
+  <section class="post-section">
+    <h2>Calculadora Rápida de Diagnóstico</h2>
+    <div class="interactive-card">
+      <label for="sintomaSelect">Selecione o sintoma observado no rebanho:</label>
+      <select id="sintomaSelect" onchange="avaliarSintoma()">
+        <option value="">-- Escolha uma opção --</option>
+        <option value="grumos">Grumos ou pus no teste da caneca</option>
+        <option value="incho">Úbere inchado, duro e dolorido</option>
+        <option value="ccs">Queda de produção e CCS elevada no tanque</option>
+      </select>
+      <div id="resultadoDiag" class="result-box">Selecione um sintoma acima...</div>
+    </div>
+  </section>
+</article>
